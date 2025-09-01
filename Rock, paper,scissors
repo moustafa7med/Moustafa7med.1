@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #1a1a1a;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 { color: #4cafef; }
+    .choices button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+    }
+    .rock { background: #f44336; color: #fff; }
+    .paper { background: #4caf50; color: #fff; }
+    .scissors { background: #2196f3; color: #fff; }
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock ✊ Paper ✋ Scissors ✌️</h1>
+  <div class="choices">
+    <button class="rock" onclick="play('rock')">Rock</button>
+    <button class="paper" onclick="play('paper')">Paper</button>
+    <button class="scissors" onclick="play('scissors')">Scissors</button>
+  </div>
+  <div class="result" id="result">Make your move!</div>
+
+  <script>
+    function play(playerChoice) {
+      const choices = ["rock", "paper", "scissors"];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+      let result = "";
+      if (playerChoice === computerChoice) {
+        result = `🤝 It's a tie! You both chose ${playerChoice}`;
+      } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+      ) {
+        result = `✅ You win! ${playerChoice} beats ${computerChoice}`;
+      } else {
+        result = `❌ You lose! ${computerChoice} beats ${playerChoice}`;
+      }
+
+      document.getElementById("result").textContent = result;
+    }
+  </script>
+</body>
+</html>
